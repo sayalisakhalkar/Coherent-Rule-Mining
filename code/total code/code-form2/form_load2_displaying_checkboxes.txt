@@ -1,0 +1,183 @@
+ Public Sub Form2_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        fc = False
+        flagclass = False
+
+
+        ReDim radio_button(Form1.radio_total)
+        Dim name As String
+        name = ""
+        Dim m(Form1.cc) As Integer
+        Dim mx(Form1.cc) As Integer
+
+
+        Dim f1 As Form1
+        f1 = New Form1()
+
+
+
+        init = 0
+        i = 0
+        j = 0
+        k = 0
+
+        posx = 5
+        posy = 45
+
+        Dim dis As Integer
+        Dim tp As Integer
+        tp = 0
+
+        Dim x As Integer
+        x = 15
+        Dim y As Integer
+        y = 15
+
+        dis = 0
+        Dim l As Integer
+        l = Form1.arr6.Length
+        ' MsgBox(l.ToString)
+        While (i < Form1.cc)
+
+            init = Form1.arr_distinct(i)
+
+            grpbox1(i) = New GroupBox
+            grpbox1(i).Location = New System.Drawing.Point(posx, posy)
+            '  grpbox1(i).Name = Form1.arr6(i) + "hello"
+            grpbox1(i).Text = Form1.arr6(i)
+            ' grpbox1(i).AutoSize = True
+
+
+            grpbox1(i).AutoSize = True
+
+
+
+            '  grpbox1(i).Size = New System.Drawing.Size(300, 80)
+            grpbox1(i).TabIndex = 0
+            grpbox1(i).TabStop = False
+
+            Me.Controls.Add(grpbox1(i))
+            m(i) = posx
+            mx(i) = posy
+
+            grpbox1(i).ResumeLayout(False)
+            grpbox1(i).PerformLayout()
+
+            If (init > 2) Then
+
+                While (init > 0)
+
+
+
+                    radio_button(k) = New CheckBox
+                    'radio_button(k).AutoSize = True
+
+                    radio_button(k).Location = New System.Drawing.Point(x, y)
+                    'radio_button(k).Name = Form1.radio(k)
+                    radio_button(k).Text = Form1.radio(k)
+                    radio_button(k).Checked = True
+
+
+
+                    radio_button(k).Size = New System.Drawing.Size(90, 17)
+                    radio_button(k).TabIndex = 0
+                    radio_button(k).TabStop = True
+
+
+
+                    radio_button(k).UseVisualStyleBackColor = True
+                    grpbox1(i).Controls.Add(radio_button(k))
+
+
+                    AddHandler radio_button(k).CheckedChanged, AddressOf MyCheckboxes_CheckedChanged
+                    x += radio_button(k).Width
+                    '  x += 70
+
+
+
+                    If (x > 280) Then
+                        y += radio_button(k).Height
+                        'y += 20
+                        tp = 0
+                        x = 15
+
+
+                    End If
+                    tp += 1
+                    k = k + 1
+                    init -= 1
+
+                End While
+
+            Else
+                While (init > 0)
+
+
+
+                    radio_button(k) = New CheckBox
+                    '  radio_button(k).AutoSize = True
+
+                    radio_button(k).Location = New System.Drawing.Point(x, y)
+                    'radio_button(k).Name = Form1.radio(k)
+                    radio_button(k).Text = Form1.radio(k)
+                    radio_button(k).Enabled = True
+                    radio_button(k).Checked = True
+
+
+
+                    radio_button(k).Size = New System.Drawing.Size(90, 17)
+                    radio_button(k).TabIndex = 0
+                    radio_button(k).TabStop = True
+
+                    radio_button(k).UseVisualStyleBackColor = True
+                    grpbox1(i).Controls.Add(radio_button(k))
+
+                    '  MsgBox(radio_button(k).Text)
+
+                    AddHandler radio_button(k).CheckedChanged, AddressOf MyCheckboxes_CheckedChanged
+                    x += radio_button(k).Width
+                    k = k + 1
+                    init -= 1
+
+                End While
+            End If
+            j += 1
+            posx += grpbox1(i).Width
+
+
+
+            If (j > 2) Then
+                j = 0
+                posy += grpbox1(i).Height
+
+                posx = 0
+            End If
+            i = i + 1
+
+            x = 15
+            y = 15
+
+
+        End While
+        '  MsgBox("x " + posx.ToString + " y " + posy.ToString)
+
+        'MsgBox(k.ToString)
+
+        rad_ck(radio_selected)
+
+        '
+        'Form2
+        '
+        Me.ClientSize = New System.Drawing.Size(416, 436)
+        Me.Name = "Form2"
+        Me.Text = "Form2"
+        Me.ResumeLayout(False)
+
+
+        posx = m.Max() + 15
+        posy = mx.Max() + 15
+
+
+
+
+
+    End Sub

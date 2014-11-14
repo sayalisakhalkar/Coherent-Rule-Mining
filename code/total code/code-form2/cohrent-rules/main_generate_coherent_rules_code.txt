@@ -1,0 +1,252 @@
+Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+
+        Dim sCommand55k As New SqlCommand
+       ' MsgBox("ar6 " + arr6(0))
+        Dim connectionString As String
+        connectionString = "Data Source=SAYALI-1B156B51;Initial Catalog=beproject;Integrated Security=true;"
+        connection = New SqlConnection(connectionString)
+        Dim sqleee As String
+        sqleee = "delete from coherent1"
+        ' MsgBox(sqlee)
+        connection.Open()
+        sCommand = New SqlCommand(sqleee, connection)
+        Try
+            sCommand.ExecuteNonQuery()
+        Catch ex As Exception
+            MsgBox(ex.Message + " Error")
+        End Try
+        connection.Close()
+
+        Dim i2 As Integer
+        i2 = 0
+        Dim ppp As Integer
+        ppp = 0
+        Dim ppp1 As Integer
+        ppp1 = 0
+        Dim ppp2 As Integer
+        ppp2 = 0
+        Dim ppp3 As Integer
+        ppp3 = 0
+        power(i - 1, radio_selected)
+        'MsgBox(pow1(2))
+        pp = 0
+        pa = 0
+        ap = 0
+        aa = 0
+        pp1 = 0
+        aa1 = 0
+        ap1 = 0
+        Dim temp_chkk As String
+        temp_chkk = ""
+        Dim temp_chkk1 As String
+        temp_chkk1 = ""
+        pa1 = 0
+        Dim ind1 As Integer
+        Dim ind2 As Integer
+        Dim flgg As Boolean
+        Dim indexxx As Integer
+        indexxx = 0
+        flgg = False
+        Dim ind3 As Integer
+        Dim flg As Boolean
+        flg = False
+        Dim flg1 As Boolean
+        flg1 = False
+        ind1 = 0
+        ind2 = 1
+        ind3 = 0
+        Dim u As Integer
+        u = 0
+        Dim support_class As Integer
+        support_class = 0
+        Dim pp2 As Double
+        pp2 = 0.0
+        pc = cc
+        '  MsgBox("pc " + pc.ToString)
+
+        '  MsgBox(powset.ToString)
+
+        coh = ""
+
+        While (ind1 < pc)
+            ind2 = 1
+
+            While (ind2 < powset)
+
+                ind3 = 0
+                pp = 0
+                aa = 0
+                ap = 0
+                pa = 0
+                pp1 = 0
+                aa1 = 0
+                ap1 = 0
+                pa1 = 0
+                pp2 = 0
+                ppp = 0
+                ppp1 = 0
+                ppp2 = 0
+                ppp3 = 0
+                ' MsgBox("pow1(ind2)" + pow1(ind2))
+                flgg = False
+                ' MsgBox(pow1(ind2).Contains(",").ToString)
+                If (pow1(ind2).Contains(",")) Then
+                    flgg = True
+                    indexxx = pow1(ind2).IndexOf(",")
+                    ' MsgBox("pow(ind2) " + pow1(ind2) + "indexxx " + indexxx.ToString + "pow1(ind2).Length - 1 " + (pow1(ind2).Length - 1).ToString)
+                    'MsgBox("DISP " + pow1(ind2) + ".Substring(" + (indexxx + 1).ToString + "," + (pow1(ind2).Length - 1).ToString + ")")
+                    'indexxx + 1, pow1(ind2).Length +1
+                    'MsgBox("pow " + pow1(ind2))
+                    temp_chkk = (pow1(ind2)).Substring(indexxx + 1)
+                    ' MsgBox("temp_chkk " + temp_chkk)
+                    temp_chkk1 = (pow1(ind2)).Substring(0, indexxx)
+                    ' MsgBox("temp_chkk1 " + temp_chkk1)
+                Else
+                    flgg = False
+                End If
+                While (ind3 < Form1.total1)
+
+                    If (comp(pow1(ind2), Form1.csv(ind3))) Then
+
+                        pp1 += 1
+
+                    End If
+                    If (flgg = True) Then
+                        If (comp(temp_chkk, Form1.csv(ind3))) Then
+
+                            ppp += 1
+
+                        End If
+                        If (comp(temp_chkk1, Form1.csv(ind3))) Then
+
+                            ppp3 += 1
+
+                        End If
+                    End If
+
+                    
+                    ind3 = ind3 + 1
+                End While
+                ind3 = 0
+                While (ind3 < Form1.total1)
+
+                    If (Form1.csv(ind3).Contains(arr6(ind1))) Then
+                        pp2 += 1
+                        If (flgg = True) Then
+                            If (comp(temp_chkk, Form1.csv(ind3))) Then
+
+                                ppp1 += 1
+
+                            End If
+                            If (comp(temp_chkk1, Form1.csv(ind3))) Then
+
+                                ppp2 += 1
+
+                            End If
+                        End If
+                        If (comp(pow1(ind2), Form1.csv(ind3))) Then
+
+                            flg = True
+                            pp += 1
+                        Else
+
+                            pa += 1
+                        End If
+                    Else
+
+                        If (flg) Then
+                            ap += 1
+                            flg = False
+                        Else
+                            aa += 1
+                        End If
+                    End If
+                    ind3 = ind3 + 1
+                End While
+                Dim support As String
+                support = ""
+                Dim sqlee As String
+                Dim confidence As Integer
+                confidence = 0
+                Dim lift1 As Double
+                lift1 = 0.0
+                Dim liftAA As Double
+                liftAA = 0.0
+                Dim liftBB As Double
+                liftBB = 0.0
+                Dim IruleA As Double
+                IruleA = 0.0
+                Dim IruleB As Double
+                IruleB = 0.0
+                Dim ind11 As Integer
+                ind11 = 0
+                Dim confid As Integer
+                confid = 0
+                Dim confid1 As Integer
+                confid1 = 0
+                Dim lift2 As Integer
+                lift2 = 0
+                Dim lift3 As Integer
+                lift3 = 0
+                ' ind11 = pow1(ind2).IndexOf(",")
+                'MsgBox("ind11 " + ind11.ToString)
+                'MsgBox("pp1" + pp1.ToString + "pp " + pp.ToString + " ap" + ap.ToString + " aa" + aa.ToString + " pa" + pa.ToString)
+
+                If pp > ap And pp > pa Then
+                    If aa > ap And aa > pa Then
+
+                        If pow1(ind2).Last.Equals(",") Then
+                            pow1(ind2) = pow1(ind2).Remove(pow1(ind2).LastIndexOf(","), 1)
+                        End If
+                        confidence = (pp / pp1) * 100
+
+                        '    MsgBox("Confidence " + confidence.ToString)
+                        support = pp.ToString + "/" + Form1.total1.ToString
+                        lift1 = (confidence / pp2)
+                        If (flgg = True) Then
+                            confid = (ppp1 / ppp) * 100
+                            confid1 = (ppp2 / ppp3) * 100
+                            lift2 = (confid / pp2)
+                            lift3 = (confid1 / pp2)
+                            liftAA = (lift1 / lift2)
+                            liftBB = (lift1 / lift3)
+                            IruleA = (liftAA / lift3)
+                            IruleB = (liftBB / lift2)
+                        End If
+                        coh += " " + pow1(ind2) + " --> " + arr6(ind1) + ";" + ""
+
+                        sqlee = "insert into coherent1 values('" + pow1(ind2) + "-->" + arr6(ind1) + "','" + support.ToString + "','" + confidence.ToString + "','" + lift1.ToString + "','" + liftAA.ToString + "','" + liftBB.ToString + "','" + IruleA.ToString + "','" + IruleB.ToString + "')"
+                        ' MsgBox("sqlee " + sqlee)
+                        'MsgBox(sqlee)
+                        connection.Open()
+                        sCommand55k = New SqlCommand(sqlee, connection)
+                        Try
+                            sCommand55k.ExecuteNonQuery()
+                        Catch ex As Exception
+                            MsgBox(ex.Message + " Error")
+                        End Try
+                        ' MsgBox(" arr6() " + arr6(ind1))
+                        ' MsgBox("pp - both present " + pp.ToString + "pp1 only left side present " + pp1.ToString)
+
+                        ' MsgBox("support " + support.ToString + "total " + Form1.total1.ToString)
+                        u = u + 1
+                    End If
+                End If
+                ind2 += 1
+                connection.Close()
+            End While
+            ind1 += 1
+            connection.Close()
+        End While
+
+
+        '  coh = coh.Remove(coh.LastIndexOf(","), 1)
+        'MsgBox(coh)
+
+        TextBox1.Text = coh
+
+        MsgBox("total no of coherent rules are as follows" + u.ToString)
+        Form3.Show()
+        ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+    End Sub

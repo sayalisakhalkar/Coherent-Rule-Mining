@@ -1,0 +1,193 @@
+ Private Sub csv1(ByRef append As String, ByRef cc As Integer)
+
+        Dim t9 As Integer
+        t9 = 0
+        Dim countsql As String
+        countsql = "select COUNT(*) from  " & tablename & ""
+        dr = sql_grid_execute(countsql, tablename)
+        sCommand = New SqlCommand(countsql, connection)
+        Try
+            dr = sCommand.ExecuteReader()
+            dr.Read()
+            t9 = dr.GetValue(0)
+            dr.Close()
+        Catch ex As Exception
+
+        End Try
+        total1 = t9
+        Dim len As Integer
+        Dim t As Integer
+        
+        Dim animals(total1) As String
+        ReDim csv(total1)
+
+        t = 1   'starting from t=1 bcauz 1st column id is not to be included in csv 
+        len = 0
+
+
+        If Not chkflag Then
+            
+            len = append.Length
+            append = append.Substring(0, len)
+            cc = num_of_cols - 2
+            
+        Else
+
+            len = append.Length
+            append = append.Substring(0, len - 1)
+
+        End If
+       
+        Dim f2 As Integer
+        f2 = 0
+        Dim buffer As String
+        Dim buffer1 As String
+        buffer1 = ""
+        buffer = ""
+        
+        Dim sql6p As String = "select " + arr5(1) + " from " & tablename & ""
+        'MsgBox(sql6p)
+        dr = sql_grid_execute(sql6p, tablename)
+
+        sCommand = New SqlCommand(sql6p, connection)
+        Try
+            dr = sCommand.ExecuteReader()
+
+            While dr.Read()
+                animals(f2) = dr.GetValue(0).ToString
+                f2 = f2 + 1
+            End While
+
+            f2 = 0
+            dr.Close()
+        Catch ex As Exception
+
+        End Try
+        ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+      
+        ReDim appendd(total1)
+
+        Dim buf As String
+        Dim poin As Integer
+        Dim t1 As Integer
+        t1 = 0
+        Dim fc As Integer
+        buf = ""
+        poin = 0
+        t1 = 0
+
+        While poin < total1
+        Dim sqlp As String = "select " + append + " from " & tablename & " where " + arr5(1) + "='" + animals(poin) + "'"
+            
+            sCommand = New SqlCommand(sqlp, connection)
+            Try
+                t1 = 0
+                dr = sCommand.ExecuteReader()
+                fc = dr.FieldCount
+             
+                dr.Read()
+
+                While (fc > 0)
+
+                    buf += dr.GetName(t1) + dr.GetValue(t1).ToString + ","
+                    'MsgBox("buf " + buf + " t1 " + t1.ToString)
+                    fc = fc - 1
+                    t1 += 1
+
+                End While
+
+                appendd(poin) = buf
+                poin = poin + 1
+    
+                buf = ""
+                dr.Close()
+
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+
+        End While
+
+
+        Dim tp1 As Integer
+        tp1 = 0
+
+        While tp1 < total1
+
+            appendd(tp1) = appendd(tp1).Remove(appendd(tp1).LastIndexOf(","), 1)
+            tp1 += 1
+
+        End While
+
+        buffer = ""
+        f2 = 0
+        append = append + "," + arr5(num_of_cols)
+
+        While f2 <= total1
+            Dim sql6pp As String = "select " + append + " from " & tablename & " where " + arr5(1) + "='" + animals(f2) + "'"
+          
+            sCommand = New SqlCommand(sql6pp, connection)
+            Try
+
+                dr = sCommand.ExecuteReader()
+               
+                While dr.Read()
+                    t = 2
+
+                    While (t <= (cc + 2))
+                        If (t = cc + 2) Then
+                            buffer = buffer + dr.GetValue(t - 2).ToString
+
+                            t = t + 1
+                        Else
+                            buffer = buffer + dr.GetName(t - 2) + "" + 
+dr.GetValue(t - 2).ToString + ","
+
+
+                            t = t + 1
+                        End If
+
+                    End While
+
+
+                End While
+           
+                csv(f2) = buffer
+                f2 = f2 + 1
+
+                buffer = ""
+                dr.Close()
+            Catch ex As Exception
+                'MsgBox(ex.ToString)
+
+            End Try
+
+        End While
+
+        Dim sql1016 As String = "delete from final1"
+        sql_execute(sql1016, "final1")
+        Dim i1 As Integer
+        i1 = 0
+        Dim sql6ppp As String
+        sql6ppp = ""
+        While i1 < total1
+            sql6ppp = "insert into final1 values('" + animals(i1) + "','" + csv(i1) + "')"
+
+            sCommand1 = New SqlCommand(sql6ppp, connection)
+            Try
+                sCommand1.ExecuteNonQuery()
+            Catch ex As Exception
+
+            End Try
+
+            i1 = i1 + 1
+
+        End While
+
+
+        sql33 = "select * from final1"
+        sql_grid_execute(sql33, "final1")
+        grid("final1")
+
+
+    End Sub

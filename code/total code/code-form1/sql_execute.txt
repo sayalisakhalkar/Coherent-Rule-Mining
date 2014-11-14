@@ -1,0 +1,14 @@
+Public Sub sql_execute(ByVal sql33 As String, ByVal tablename As String)
+        sCommand = New SqlCommand(sql33, connection)
+        sAdapter = New SqlDataAdapter(sCommand)
+        sBuilder = New SqlCommandBuilder(sAdapter)
+        Try
+            sCommand.ExecuteNonQuery()
+
+            'sCommand.ExecuteReader()
+
+        Catch ex As Exception
+
+        End Try
+
+    End Sub

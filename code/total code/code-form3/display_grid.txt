@@ -1,0 +1,31 @@
+ Public Function sql_grid_execute(ByVal sqlst As String, ByVal tablename As String) As SqlDataReader
+
+        Try
+            sCommand = New SqlCommand(sqlst, Form1.connection)
+            sAdapter = New SqlDataAdapter(sCommand)
+            sBuilder = New SqlCommandBuilder(sAdapter)
+            sDs = New DataSet()
+            sAdapter.Fill(sDs, tablename)
+            sTable = sDs.Tables(tablename)
+
+        Catch ex As Exception
+            MsgBox(ex.Message & " Error Connecting to database!")
+        End Try
+
+        ' MsgBox("Success sql_grid")
+        Return dr
+
+    End Function
+
+    Public Sub grid(ByRef tablename1 As String)
+
+        DataGrid1.DataSource = sDs.Tables(tablename1)
+        DataGrid1.ReadOnly = True
+        Try
+            DataGrid1.DataSource = DataGridViewSelectionMode.FullRowSelect
+        Catch ex As Exception
+            ' MsgBox(ex.Message & " Error Connecting to database!")
+        End Try
+        ' MsgBox("grid")
+
+    End Sub

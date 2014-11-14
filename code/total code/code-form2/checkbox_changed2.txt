@@ -1,0 +1,24 @@
+ Private Sub MyCheckboxes_CheckedChanged2(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        flagclass = True
+
+
+        Dim append As String
+        append = ""
+        cc = 0
+        pc = 0
+        '   MsgBox(q1.ToString)
+        While (pc < q1)
+
+            If checkBox(pc).Checked = True Then
+
+                arr6(cc) = checkBox(pc).Text
+                append = append + arr6(cc) + ","
+
+                cc = cc + 1
+
+            End If
+            pc = pc + 1
+        End While
+
+
+    End Sub

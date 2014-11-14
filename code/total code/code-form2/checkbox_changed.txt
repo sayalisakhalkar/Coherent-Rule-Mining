@@ -1,0 +1,29 @@
+Private Sub MyCheckboxes_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        countrad = 0
+        fc = True
+
+        Dim p As Integer
+        p = 0
+        Dim i1 As Integer
+        i1 = 0
+        Dim s As String
+        s = ""
+
+        While (p < Form1.radio_total)
+
+            If radio_button(p).Checked = True Then
+
+                radio_selected(i1) = radio_button(p).Text
+                
+                s = s + radio_selected(i1) + ","
+                
+                i1 += 1
+                countrad += 1
+
+
+            End If
+
+            p = p + 1
+        End While
+
+    End Sub

@@ -1,0 +1,11 @@
+ Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'Form2.Show()
+        ' Form5.Show()
+        flg = False
+
+        chkflag = False
+
+
+        conn()
+
+    End Sub

@@ -1,0 +1,25 @@
+// All variables declared global  
+
+Private Sub MyCheckboxes_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
+
+        Dim p As New Integer
+        chkflag = True
+        append = ""
+        cc = 0
+        p = 2
+
+        While (p < (num_of_cols))
+
+            If checkBox(p).Checked = True Then
+
+                arr6(cc) = checkBox(p).Text
+                append = append + arr6(cc) + ","
+                cc = cc + 1
+
+            End If
+
+            p = p + 1
+
+        End While
+       
+    End Sub

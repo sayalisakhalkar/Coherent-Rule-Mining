@@ -1,0 +1,7 @@
+1. Inherits System.Windows.Forms.Form
+
+2. Public Shared connection As SqlConnection 
+
+3. Public Shared coher(10000)() As String
+
+4. Public Shared radio_selected(10000) As String

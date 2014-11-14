@@ -1,0 +1,32 @@
+ Public Sub chckarray(ByVal ParamArray arr5() As String)
+
+
+        posx = 42
+        posy = 217
+
+        x = 0
+
+        For i = 2 To num_of_cols - 1
+
+
+            checkBox(i) = New CheckBox()
+            Me.Controls.Add(checkBox(i))
+            checkBox(i).Location = New Point(posx, posy)
+            checkBox(i).Text = arr5(i)
+            checkBox(i).Checked = True
+            checkBox(i).Size = New Size(81, 20)
+
+            AddHandler checkBox(i).CheckedChanged, AddressOf MyCheckboxes_CheckedChanged
+            posx += 93
+            x += 1
+            If (x > 3) Then
+                posy += 35
+                posx = 42
+                x = 0
+            End If
+
+        Next
+
+
+
+    End Sub

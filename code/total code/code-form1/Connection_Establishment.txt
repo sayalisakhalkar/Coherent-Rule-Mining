@@ -1,0 +1,11 @@
+ Public Sub conn()
+
+        connectionString = "Data Source=SAYALI-1B156B51;Initial Catalog=beproject;Integrated Security=true;"
+        connection = New SqlConnection(connectionString)
+        Try
+            connection.Open()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+    End Sub

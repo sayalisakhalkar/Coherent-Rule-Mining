@@ -1,0 +1,29 @@
+Public Sub chckarray(ByVal ParamArray arr5() As String)
+
+        Dim x As Integer
+        Dim q As Integer
+        Dim dum As Integer
+        dum = posx
+
+        x = 0
+        For q = 0 To q1 - 1
+
+            checkBox(q) = New CheckBox()
+            Me.Controls.Add(checkBox(q))
+            checkBox(q).Location = New Point(posx, posy)
+            checkBox(q).Text = arr5(q)
+            checkBox(q).Checked = True
+            checkBox(q).Size = New Size(85, 30)
+            checkBox(q).AutoSize = True
+            AddHandler checkBox(q).CheckedChanged, AddressOf MyCheckboxes_CheckedChanged2
+            posx += checkBox(q).Width
+            x += 1
+            If (x > 5) Then
+                posy += checkBox(q).Height
+                posx = dum
+                x = 0
+            End If
+
+        Next
+
+    End Sub

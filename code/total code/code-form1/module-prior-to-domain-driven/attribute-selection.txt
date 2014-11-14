@@ -1,0 +1,29 @@
+ Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        flg = True
+
+        If IsNullOrEmpty(tablename) Then
+            MsgBox("Select the table name ")
+            Exit Sub
+        End If
+       
+        Dim count1 As Integer
+        Dim temp5 As String
+        count1 = 0
+        temp5 = ""
+        temp6 = ""
+
+        sql33 = "select COUNT(*) from INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = '" & tablename & "'"
+        sCommand = New SqlCommand(sql33, connection)
+        Try
+            dr = sCommand.ExecuteReader()
+            dr.Read()
+            num_of_cols = dr.GetValue(0)
+            
+        Catch ex As Exception
+            MsgBox(ex.Message & " Error Connecting to database!")
+        End Try
+
+        dr.Close()
+        name_array(num_of_cols)
+
+    End Sub

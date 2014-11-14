@@ -1,0 +1,92 @@
+Public Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+
+        For i = 2 To num_of_cols - 1
+
+            ' AddHandler checkBox(i).CheckedChanged, AddressOf MyCheckboxes_CheckedChanged
+
+        Next
+
+        If IsNullOrEmpty(tablename) Then
+
+            MsgBox("Select the table name ")
+            Exit Sub
+
+        End If
+        ' MsgBox("cc" + cc.ToString)
+        If Not flg Then
+            MsgBox("Error...click on CSV button")
+            Exit Sub
+        End If
+
+        csv1(append, cc)
+
+
+        Dim sql64ttt As String
+        Dim q As Integer
+        q = 0
+        Dim q1 As Integer
+        q1 = 0
+
+        radio_total = 0
+
+
+
+        While (q < (cc))
+            sql64ttt = "select count (distinct " + arr6(q) + ") from " & tablename & ""
+            'MsgBox(sql64ttt)
+
+            sCommand = New SqlCommand(sql64ttt, connection)
+            Try
+
+                dr = sCommand.ExecuteReader()
+            Catch ex As Exception
+            End Try
+            ' MsgBox(dr.Read().ToString)
+
+            ' MsgBox("dr.get")
+            While dr.Read()
+                arr_distinct(q1) = dr.GetSqlInt32(0)
+            End While
+            'MsgBox("arr_distinct " + arr_distinct(q1).ToString)
+            radio_total += arr_distinct(q1)
+            '   MsgBox(arr6(q1))
+            q1 += 1
+            q += 1
+            dr.Close()
+        End While
+        ' MsgBox("radio_total " + radio_total.ToString)
+        q = 0
+        q1 = 0
+        dr.Close()
+        ReDim radio(radio_total)
+
+        '   MsgBox(cc.ToString)
+
+        While (q < cc)
+            Dim sql64tt As String = "select distinct " + arr6(q) + " from " & tablename & ""
+            ' MsgBox("q" + q.ToString + "qry" + sql64tt)
+            sCommand = New SqlCommand(sql64tt, connection)
+
+            Try
+                dr = sCommand.ExecuteReader()
+            Catch ex As Exception
+
+            End Try
+
+            While (dr.Read())
+                ' If (Not (dr.GetValue(0).ToString.Equals("Nil"))) Then
+                radio(q1) = dr.GetName(0) + dr.GetValue(0).ToString
+                '   MsgBox(radio(q1))
+                q1 += 1
+                ' End If
+            End While
+            dr.Close()
+            q += 1
+        End While
+
+
+
+        Form2.Show()
+
+
+    End Sub

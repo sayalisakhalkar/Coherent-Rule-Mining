@@ -1,0 +1,76 @@
+Friend Sub power(ByVal count As Integer, ByVal ParamArray radio_selected1() As String)
+
+        f1 = 0
+        ' i = 1
+        powset = 1
+
+        ' MsgBox("i " + i.ToString)
+
+        While (f1 < i)
+            powset = powset * 2
+            f1 = f1 + 1
+        End While
+
+
+        Dim pow(powset) As String
+        ReDim pow1(powset)
+
+        p = 0
+        'Size of this array will be number of elements in power set
+        Dim arr2(powset) As String
+        ' Finding powersets in the form 0 till 15 -- various combinations --> 0000, 0001 ,.......,1111
+
+        f2 = 0
+        While (f2 < powset)
+
+            ' Converting to Binary ..if not of length 4 then pad that many zero's at the starting
+            arr2(p) = Convert.ToString(f2, 2).PadLeft(i, "0"c)
+            ' MsgBox(arr2(p))
+            p = p + 1
+            f2 = f2 + 1
+
+        End While
+        Dim Str As String
+
+        Dim qq As Integer
+        qq = 0
+        Dim qq1 As Integer
+        qq1 = 0
+        While (qq < powset)
+            Str = ""
+            qq1 = 0
+            While (qq1 < i)
+                ' MsgBox("arr2(qq).Chars(qq1)" + arr2(qq).Chars(qq1))
+                If (arr2(qq).Chars(qq1) = "1") Then
+
+                    Str = Str + radio_selected(qq1) + ","
+                    'MsgBox("rs" + radio_selected(qq1))
+                End If
+                qq1 += 1
+            End While
+            pow(qq) = Str
+            pow1(qq) = Str
+            '  MsgBox(pow1(qq))
+
+            qq += 1
+        End While
+
+
+
+        ' MsgBox(pow1(qq - 1))
+
+
+
+        Dim tp1 As Integer
+        tp1 = 1
+
+        While tp1 < powset
+            'MsgBox(pow1(tp1) + " b4 ")
+
+            pow1(tp1) = pow1(tp1).Remove(pow1(tp1).LastIndexOf(","), 1)
+            ' MsgBox(" aftre " + pow1(tp1))
+            tp1 += 1
+
+        End While
+
+    End Sub

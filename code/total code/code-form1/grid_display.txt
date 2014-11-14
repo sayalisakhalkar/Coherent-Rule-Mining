@@ -1,0 +1,18 @@
+Public Function sql_grid_execute(ByVal sqlst As String, ByVal tablename As String) As SqlDataReader
+
+        Try
+            sCommand = New SqlCommand(sqlst, connection)
+            sAdapter = New SqlDataAdapter(sCommand)
+            sBuilder = New SqlCommandBuilder(sAdapter)
+            sDs = New DataSet()
+            sAdapter.Fill(sDs, tablename)
+            sTable = sDs.Tables(tablename)
+
+        Catch ex As Exception
+            MsgBox(ex.Message & " Error Connecting to database!")
+        End Try
+
+        ' MsgBox("Success sql_grid")
+        Return dr
+
+    End Function

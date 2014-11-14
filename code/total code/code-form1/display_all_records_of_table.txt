@@ -1,0 +1,14 @@
+Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+
+        'tablename = ComboBox1.SelectedItem.ToString
+        If IsNullOrEmpty(tablename) Then
+
+            MsgBox("Select the table name ")
+            Exit Sub
+
+        End If
+        sql33 = "SELECT * FROM " & tablename & ""
+        sql_grid_execute(sql33, tablename)
+        grid(tablename)
+
+    End Sub

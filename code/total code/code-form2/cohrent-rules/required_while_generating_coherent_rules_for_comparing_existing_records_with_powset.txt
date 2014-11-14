@@ -1,0 +1,49 @@
+Private Function comp(ByRef subs As String, ByRef str As String)
+        Dim flag As Boolean
+        Dim s(100) As String
+        Dim ind As Integer
+        ind = 0
+        'subs = "hairT,feathersF,eggsT"
+        'MsgBox("str " + str)
+
+        Dim ch As Char
+
+        ch = subs.Last
+
+
+        Dim k As Integer
+        k = 0
+        ' MsgBox(" str " + str)
+        ' MsgBox(" subs1 " + subs)
+        If (ch.Equals(",")) Then
+
+            subs = subs.Remove(subs.LastIndexOf(","), 1)
+        End If
+
+        ' MsgBox(" subs2 " + subs)
+        s = subs.Split(",")
+        ' MsgBox("s len " + s.Length.ToString)
+        flag = True
+        Dim if123 As Integer
+        if123 = 0
+        'MsgBox("s " + s.Length.ToString)
+        While ind < s.Length
+            ' MsgBox("contains " + str.Contains(s(ind)).ToString)
+            ' MsgBox(" s== " + s(ind))
+
+            If str.Contains(s(ind)) Then
+                'MsgBox(" ind " + ind.ToString)
+
+            Else
+                Return False
+            End If
+            ind += 1
+        End While
+
+
+
+        Return flag
+
+
+    End Function
+End Class

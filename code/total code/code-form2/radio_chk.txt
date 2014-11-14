@@ -1,0 +1,44 @@
+ Private Sub rad_ck(ByVal ParamArray radio_selected() As String)
+        '        MsgBox(Form1.radio_total.ToString + " q1 in form2")
+        If Not fc Then
+            For q = 0 To Form1.radio_total - 1
+                radio_selected(q) = Form1.radio(q)
+                'MsgBox(radio_selected(q))
+
+
+            Next
+        End If
+
+
+        Dim sql1 As String
+
+        q1 = 0
+
+        sql1 = "select distinct (" + Form1.arr5(Form1.num_of_cols) + ") from " & Form1.tablename & ""
+        ' MsgBox(sql1)
+        Form1.sql_execute(sql1, Form1.tablename)
+        sCommand = New SqlCommand(sql1, Form1.connection)
+        Try
+
+            dr = sCommand.ExecuteReader()
+        Catch ex As Exception
+        End Try
+        ' MsgBox(dr.Read().ToString)
+
+        ' MsgBox("dr.get")
+        While dr.Read()
+            arr5(q1) = dr.GetValue(0).ToString
+            ' MsgBox("arr_distinct " + arr5(q1))
+            q1 += 1
+
+        End While
+
+
+        '   MsgBox(arr6(q1))
+
+
+        dr.Close()
+
+        chckarray(arr5)
+
+    End Sub

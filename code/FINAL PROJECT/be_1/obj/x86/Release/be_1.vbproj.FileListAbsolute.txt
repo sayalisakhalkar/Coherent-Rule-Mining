@@ -1,0 +1,13 @@
+C:\Documents and Settings\sonal\my documents\visual studio 2010\Projects\be_1\be_1\bin\Release\be_1.exe
+C:\Documents and Settings\sonal\my documents\visual studio 2010\Projects\be_1\be_1\bin\Release\be_1.pdb
+C:\Documents and Settings\sonal\my documents\visual studio 2010\Projects\be_1\be_1\bin\Release\be_1.xml
+C:\Documents and Settings\sonal\my documents\visual studio 2010\Projects\be_1\be_1\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\sonal\my documents\visual studio 2010\Projects\be_1\be_1\obj\x86\Release\WindowsApplication1.Form1.resources
+C:\Documents and Settings\sonal\my documents\visual studio 2010\Projects\be_1\be_1\obj\x86\Release\WindowsApplication1.Form2.resources
+C:\Documents and Settings\sonal\my documents\visual studio 2010\Projects\be_1\be_1\obj\x86\Release\WindowsApplication1.Resources.resources
+C:\Documents and Settings\sonal\my documents\visual studio 2010\Projects\be_1\be_1\obj\x86\Release\WindowsApplication1.SplashScreen1.resources
+C:\Documents and Settings\sonal\my documents\visual studio 2010\Projects\be_1\be_1\obj\x86\Release\GenerateResource.read.1.tlog
+C:\Documents and Settings\sonal\my documents\visual studio 2010\Projects\be_1\be_1\obj\x86\Release\GenerateResource.write.1.tlog
+C:\Documents and Settings\sonal\my documents\visual studio 2010\Projects\be_1\be_1\obj\x86\Release\be_1.exe
+C:\Documents and Settings\sonal\my documents\visual studio 2010\Projects\be_1\be_1\obj\x86\Release\be_1.xml
+C:\Documents and Settings\sonal\my documents\visual studio 2010\Projects\be_1\be_1\obj\x86\Release\be_1.pdb

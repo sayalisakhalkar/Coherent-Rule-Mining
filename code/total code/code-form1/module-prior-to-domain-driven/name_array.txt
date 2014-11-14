@@ -1,0 +1,48 @@
+Private Sub name_array(ByVal num_of_cols As Integer)
+        ReDim arr5(num_of_cols)
+        ReDim arr6(num_of_cols)
+
+        Dim k As Integer
+        k = 1
+        While k <= num_of_cols
+
+            Dim sql2 As String = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS where TABLE_NAME = '" & tablename & "' and ORDINAL_POSITION = '" & k & "'"
+            sCommand = New SqlCommand(sql2, connection)
+            Try
+
+                dr = sCommand.ExecuteReader()
+                While dr.Read()
+                    temp6 = dr(0).ToString()
+                    arr5(k) = temp6
+                End While
+                dr.Close()
+            Catch ex As Exception
+
+            End Try
+            k = k + 1
+
+        End While
+        
+        append = ""
+        Dim tp(num_of_cols) As String
+
+        For i = 2 To k - 2 Step 1
+
+            append += arr5(i) + ","
+
+        Next
+       
+        Dim i5 As Integer
+        i5 = 2
+
+        For j = 0 To num_of_cols - 2
+
+            arr6(j) = arr5(i5)
+            i5 += 1
+
+        Next
+
+        append = append.Remove(append.LastIndexOf(","), 1)
+        chckarray(arr5)
+
+    End Sub
